@@ -18,7 +18,7 @@ const authRoutes = require("./routes/authRoutes");
 const User = require("./models/user");
 
 app.get("/", (req, res) => {
-    return res.end("<h1 style='text-align:center;'>E-commerce<h1>");
+    return res.end("<h1 style='text-align:center;'>E-commerce with Rajiv<h1>");
 });
 
 app.use("/api/auth/", authRoutes);
