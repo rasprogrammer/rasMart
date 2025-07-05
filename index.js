@@ -15,12 +15,17 @@ const dbURL = process.env.DB_URL;
 connectDB(dbURL);
 
 const authRoutes = require("./routes/authRoutes");
-const User = require("./models/user");
+const { authMiddleware } = require("./middlewares/authMiddleware");
 
 app.get("/", (req, res) => {
     return res.end("<h1 style='text-align:center;'>E-commerce with Rajiv<h1>");
 });
 
 app.use("/api/auth/", authRoutes);
+
+app.get("/api/profile", authMiddleware, (req, res) => {
+    return res.end(`Profile user name : ${req.user.name}`);
+});
+
 
 app.listen(PORT, () => console.log("Server started"));

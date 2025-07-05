@@ -17,23 +17,24 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        role: {
+        role: {  // Admin, Vendor, Customer, Delivery Agent for access control
             type: String,
+            required: true,
             enum: ["admin", "vendor", "customer", "delivery"],
             default: "customer"
         },
         phone: {
             type: String,
         },
-        isVerified: {
+        isVerified: {  // Email/mobile verification
             type: Boolean,
             default: false
         },
-        twoFactorEnabled: {
+        twoFactorEnabled: {  // 2FA toggle
             type: String,
             default: false
         },
-        kycDetails: {
+        kycDetails: {  // Vendor KYC & Bank details
             aadhar: String,
             pan: String,
             bankAccount: String,
@@ -43,7 +44,7 @@ const userSchema = new mongoose.Schema(
                 default: false
             }
         },
-        addressBook: [{
+        addressBook: [{  // Multiple shipping addresses of customer
             name: String,
             phone: String,
             pincode: String,
@@ -59,7 +60,7 @@ const userSchema = new mongoose.Schema(
                 default: "home"
             }
         }],
-        resetToken: String,
+        resetToken: String,  //	Forgot/Reset Password support
         resetTokenExpiry: Date
     },
     {
@@ -69,6 +70,4 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = {
-    User
-};
+module.exports = User;
