@@ -8,4 +8,8 @@ router.post("/login", handleUserLogin);
 router.post("/me", handleUserMe);
 router.post("/logout", handleUserLogout);
 
+router.post("/forgot-password", () => { });
+router.post("/reset-password", () => { });
+
+
 module.exports = router;

@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth/", authRoutes);
 
 app.get("/api/profile", authMiddleware, (req, res) => {
-    return res.end(`Profile user name : ${req.user.name}`);
+    return res.end(`Profile user name : ${req.user}`);
 });
 
 app.get("/api/admin", authMiddleware, authRoles("admin"), (req, res) => {
